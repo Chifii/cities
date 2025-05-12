@@ -25,9 +25,9 @@ internal fun CityList(
     ) {
         items(
             items = cities,
-            key = { it.id } // Usar ID como clave para mejor rendimiento
+            key = { it.id }
         ) { city ->
-            key(city.id) { // Asegurar recomposición solo cuando cambia lo relevante
+            key(city.id) {
                 CityItem(
                     city = city,
                     onToggleFavorite = { onToggleFavorite(city.id, city.isFavorite.not()) },

@@ -18,23 +18,6 @@ data class CityDto(
         @SerializedName("lat") val lat: Double?,
         @SerializedName("lon") val lon: Double?
     ) : Parcelable
-
-    /*fun toDomain(isFavorite: Boolean = false): City? {
-        val cityId = id ?: return null
-        val cityName = name?.takeIf { it.isNotBlank() } ?: return null
-        val cityCountry = country?.takeIf { it.isNotBlank() } ?: return null
-        val lat = coordinates?.lat ?: return null
-        val lng = coordinates?.lon ?: return null
-
-        return City(
-            id = cityId,
-            name = cityName,
-            country = cityCountry,
-            lat = lat,
-            lon = lng,
-            isFavorite = isFavorite
-        )
-    }*/
 }
 
 fun CityDto.toDomain(isFavorite: Boolean = false): City? {
