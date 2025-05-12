@@ -29,7 +29,7 @@ class FilterCitiesUseCase @Inject constructor(
 
             Resource.Success(result)
         } catch (e: Exception) {
-            Resource.Error(e.message ?: "Error al filtrar ciudades")
+            return Resource.Error("Error al filtrar ciudades: ${e.message ?: "Error desconocido"}")
         }
     }
 

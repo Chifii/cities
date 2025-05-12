@@ -12,6 +12,7 @@ import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import nox.uala.challenge.BuildConfig
 import nox.uala.challenge.core.util.AppLogger
 import nox.uala.challenge.core.util.ErrorMapper.mapExceptionToAppError
 import nox.uala.challenge.core.util.ErrorMapper.mapResourceErrorToAppError
@@ -120,7 +121,8 @@ class HomeViewModel @Inject constructor(
                         _citiesLoaded.value = false
                     }
 
-                    is Resource.Loading -> { /* Estado ya manejado */
+                    is Resource.Loading -> {
+                        /* Estado ya manejado */
                     }
                 }
             } catch (e: Exception) {
@@ -154,7 +156,9 @@ class HomeViewModel @Inject constructor(
         viewModelScope.launch {
             val previousState = _uiState.value
             _uiState.value = HomeUiState.Loading
-            AppLogger.d("Cambiando favorito para ciudad $cityId a $isFavorite")
+            if (BuildConfig.DEBUG) {
+                AppLogger.d("Cambiando favorito para ciudad $cityId a $isFavorite")
+            }
 
             try {
                 val toggleResult = retryWithExponentialBackoff {
@@ -164,7 +168,9 @@ class HomeViewModel @Inject constructor(
                 }
 
                 if (toggleResult is Resource.Success) {
-                    AppLogger.i("Favorito actualizado correctamente para ciudad $cityId")
+                    if (BuildConfig.DEBUG) {
+                        AppLogger.i("Favorito actualizado correctamente para ciudad $cityId")
+                    }
 
                     val citiesResult = retryWithExponentialBackoff {
                         withContext(Dispatchers.IO) {
@@ -183,22 +189,29 @@ class HomeViewModel @Inject constructor(
 
                         is Resource.Error -> {
                             val error = mapResourceErrorToAppError(citiesResult)
-                            AppLogger.e("Error al recargar ciudades tras cambiar favorito")
-                            AppLogger.e(error)
+                            if (BuildConfig.DEBUG) {
+                                AppLogger.e("Error al recargar ciudades tras cambiar favorito")
+                                AppLogger.e(error)
+                            }
                             _uiState.value = HomeUiState.Error(error)
                         }
 
-                        is Resource.Loading -> { /* Ya manejado */
+                        is Resource.Loading -> {
+                            /* Ya manejado */
                         }
                     }
                 } else if (toggleResult is Resource.Error) {
                     val error = mapResourceErrorToAppError(toggleResult)
-                    AppLogger.e(error)
+                    if (BuildConfig.DEBUG) {
+                        AppLogger.e(error)
+                    }
                     _uiState.value = HomeUiState.Error(error)
                 }
             } catch (e: Exception) {
                 val appError = mapExceptionToAppError(e)
-                AppLogger.e(appError)
+                if (BuildConfig.DEBUG) {
+                    AppLogger.e(appError)
+                }
                 _uiState.value = HomeUiState.Error(appError)
             }
         }

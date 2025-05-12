@@ -1,5 +1,8 @@
 package nox.uala.challenge.features.home.data.repository
 
+import android.util.Log
+import io.mockk.every
+import io.mockk.mockkStatic
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.runTest
@@ -25,6 +28,11 @@ class HomeRepositoryImplTest {
 
     @Before
     fun setup() {
+        mockkStatic(Log::class)
+        every { Log.d(any(), any()) } returns 0
+        every { Log.e(any(), any()) } returns 0
+        every { Log.e(any(), any(), any()) } returns 0
+
         homeService = mock()
         cityDao = mock()
         repository = HomeRepositoryImpl(homeService, cityDao)
@@ -80,24 +88,6 @@ class HomeRepositoryImplTest {
         assertEquals(1, result.size)
         assertEquals("London", result[0].name)
     }
-
-    /*@Test
-    fun `toggleFavorite updates favorite status`() = runTest {
-        // Given
-        val city = City(1, "New York", "US", 40.7128, -74.0060, false)
-        whenever(cityDao.updateFavoriteStatus(1, true)).thenReturn(1)
-        whenever(cityDao.getCityById(1)).thenReturn(
-            testCityEntities[0].copy(isFavorite = true)
-        )
-
-        // When
-        val result = repository.toggleFavorite(city)
-
-        // Then
-        verify(cityDao).updateFavoriteStatus(1, true)
-        verify(cityDao).getCityById(1)
-        assertTrue(result.isFavorite)
-    }*/
 
     @Test
     fun `refreshCities fetches data from remote and updates local database`() = runTest {

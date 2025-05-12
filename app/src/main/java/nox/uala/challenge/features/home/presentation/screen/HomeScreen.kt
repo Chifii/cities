@@ -105,5 +105,6 @@ fun HomeScreen(
 @Preview
 @Composable
 private fun HomeScreenPreview() {
-    HomeScreen(viewModel = HomeViewModelPreview(), onCityClick = {}, onInfoClick = {})
+    val mockViewModel = HomeViewModelPreview()
+    HomeScreen(viewModel = mockViewModel, onCityClick = {}, onInfoClick = {})
 }

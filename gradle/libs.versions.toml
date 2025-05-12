@@ -12,7 +12,8 @@ koin = "3.5.3"
 retrofit = "2.9.0"
 coroutines = "1.7.3"
 navigation = "2.9.0"
-mockk = "5.2.1"
+mockk = "1.13.8"
+mockito = "5.2.1"
 mockitoCore = "5.8.0"
 hilt = "2.56.1"
 hiltNav = "1.0.0"
@@ -85,7 +86,8 @@ androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-co
 androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "coroutines" }
-mockk = { group = "org.mockito.kotlin", name = "mockito-kotlin", version.ref = "mockk" }
+mockk = { group = "io.mockk", name = "mockk", version.ref = "mockk" }
+mockito = { group = "org.mockito.kotlin", name = "mockito-kotlin", version.ref = "mockito" }
 mockito-core = { group = "org.mockito", name = "mockito-core", version.ref = "mockitoCore" }
 mockito-inline = { group = "org.mockito", name = "mockito-inline", version.ref = "mockitoInline" }
 hilt-android-testing = { group = "com.google.dagger", name = "hilt-android-testing", version.ref = "hilt" }

@@ -19,7 +19,7 @@ data class CityDto(
         @SerializedName("lon") val lon: Double?
     ) : Parcelable
 
-    fun toDomain(isFavorite: Boolean = false): City? {
+    /*fun toDomain(isFavorite: Boolean = false): City? {
         val cityId = id ?: return null
         val cityName = name?.takeIf { it.isNotBlank() } ?: return null
         val cityCountry = country?.takeIf { it.isNotBlank() } ?: return null
@@ -34,11 +34,20 @@ data class CityDto(
             lon = lng,
             isFavorite = isFavorite
         )
-    }
+    }*/
 }
 
-fun List<CityDto>.toDomain(favorites: List<Int> = emptyList()): List<City> {
-    return mapNotNull { dto ->
-        dto.toDomain(isFavorite = favorites.contains(dto.id))
+fun CityDto.toDomain(isFavorite: Boolean = false): City? {
+    if (id == null || name.isNullOrEmpty() || country.isNullOrEmpty()) {
+        return null
     }
+
+    return City(
+        id = id,
+        name = name,
+        country = country,
+        lat = coordinates?.lat ?: 0.0,
+        lon = coordinates?.lon ?: 0.0,
+        isFavorite = isFavorite
+    )
 }

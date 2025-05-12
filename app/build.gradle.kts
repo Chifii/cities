@@ -125,6 +125,7 @@ dependencies {
     // Testing
     testImplementation(libs.junit)
     testImplementation(libs.mockk)
+    testImplementation(libs.mockito)
     testImplementation(libs.mockito.core)
     testImplementation(libs.mockito.inline)
     testImplementation(libs.androidx.test.core)

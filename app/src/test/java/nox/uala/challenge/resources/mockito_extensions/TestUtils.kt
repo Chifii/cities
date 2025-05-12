@@ -16,6 +16,15 @@ val testCities = listOf(
     City(9, "Tokyo", "JP", 35.6762, 139.6503, true)
 )
 
+val testCity = City(
+    id = 1,
+    name = "Amsterdam",
+    country = "NL",
+    lat = 52.3676,
+    lon = 4.9041,
+    isFavorite = false
+)
+
 val testCityDtos = listOf(
     CityDto(
         id = 1,
