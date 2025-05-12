@@ -40,6 +40,22 @@ Este desafío presentó múltiples variables y escenarios, lo que me llevó a en
 - **Gestión de recursos**: Liberación adecuada de recursos pesados como la API de Google Maps.
 - **Filtrado optimizado**: Estrategias eficientes para filtrado de datos, considerando el volumen manejable de información.
 
+## Preprocesamiento para búsquedas eficientes
+
+Para optimizar las búsquedas de ciudades en la aplicación, se implementó una estructura especializada utilizando **Room con FTS4 (Full-Text Search)**. Esta decisión proporciona varias ventajas significativas:
+
+- **Índices optimizados**: FTS crea índices invertidos que permiten búsquedas por prefijo extremadamente rápidas, incluso con miles de ciudades.
+- **Menor consumo de memoria**: Al delegar la búsqueda a SQLite, evitamos cargar y filtrar todas las ciudades en memoria cada vez.
+- **Operaciones asíncronas**: Las consultas FTS se ejecutan en un hilo separado mediante corrutinas, manteniendo la UI responsiva durante las búsquedas.
+- **Match parcial eficiente**: Búsqueda por prefijos parciales sin necesidad de recorrer toda la colección.
+
+Esta implementación resultó considerablemente más eficiente que alternativas como:
+- Filtrado en memoria con `.filter()` o `.contains()`
+- Uso de estructuras como HashMap o TreeMap
+- Algoritmos de búsqueda personalizados
+
+Las pruebas mostraron un rendimiento superior especialmente en dispositivos con recursos limitados y con grandes volúmenes de datos.
+
 ### Manejo de datos
 - **Caché local**: Estrategia de almacenamiento local para reducir llamadas a la red y permitir uso offline.
 - **Transformación de modelos**: Mapeo claro entre modelos de datos, dominio y presentación siguiendo principios de Clean Architecture.
