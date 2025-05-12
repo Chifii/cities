@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Cities</string>
+
+    <!-- Pantalla principal -->
+    <string name="search_placeholder">Buscar ciudades</string>
+    <string name="show_favorites_only">Mostrar solo favoritas</string>
+    <string name="no_cities_found">No se encontraron ciudades</string>
+    <string name="loading">Cargando…</string>
+    <string name="error_loading_cities">Error al cargar las ciudades</string>
+    <string name="initial_map_text">Selecciona una ciudad para ver su ubicación</string>
+
+    <!-- Item de ciudad -->
+    <string name="location_format">Lat: %1$s, Lng: %2$s</string>
+    <string name="city_title_format">%1$s, %2$s</string>
+    <string name="more_info">Más información</string>
+    <string name="add_to_favorites">Agregar a favoritos</string>
+    <string name="remove_from_favorites">Quitar de favoritos</string>
+
+    <!-- Pantalla de información de ciudad -->
+    <string name="back">Volver</string>
+    <string name="location">Ubicación</string>
+    <string name="location_details">Latitud: %1$s\nLongitud: %2$s</string>
+    <string name="general_info">Información General</string>
+    <string name="general_info_content">Las ciudades son áreas urbanas con alta densidad de población y diversas infraestructuras. A menudo funcionan como centros económicos, culturales y administrativos para regiones más grandes.</string>
+    <string name="demographics">Demografía</string>
+    <string name="demographics_content">Las ciudades varían enormemente en tamaño, desde pequeños asentamientos hasta grandes metrópolis con millones de habitantes. Las características demográficas incluyen densidad de población, diversidad étnica y cultural, y patrones de migración.</string>
+    <string name="economy">Economía</string>
+    <string name="economy_content">Las economías urbanas generalmente se basan en industrias de servicios, comercio, finanzas, educación, salud y tecnología. Las ciudades más grandes suelen ser centros de innovación y desarrollo.</string>
+    <string name="transportation">Transporte</string>
+    <string name="transportation_content">Los sistemas de transporte urbano varían desde transporte público como metros, autobuses y tranvías, hasta redes de carreteras para vehículos privados, así como infraestructura para peatones y ciclistas.</string>
+
+    <!-- Pantalla de mapa -->
+    <string name="map_title">Mapa</string>
+
+    <!-- Error handling -->
+    <string name="error_generic">Ha ocurrido un error inesperado</string>
+    <string name="error_no_internet">No hay conexión a internet</string>
+    <string name="error_connection">Error de conexión</string>
+    <string name="error_server_timeout">Tiempo de espera agotado</string>
+    <string name="error_unauthorized">No autorizado</string>
+    <string name="error_forbidden">Acceso denegado</string>
+    <string name="error_not_found">Recurso no encontrado</string>
+    <string name="error_server">Error del servidor</string>
+    <string name="error_http">Error de red (%1$d)</string>
+    <string name="no_data_available">No hay datos disponibles</string>
+    <string name="retry">Reintentar</string>
+</resources>

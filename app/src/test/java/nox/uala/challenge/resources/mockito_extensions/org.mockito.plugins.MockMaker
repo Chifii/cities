@@ -1,0 +1,3 @@
+package nox.uala.challenge.resources.mockito_extensions
+
+mock-maker-inline

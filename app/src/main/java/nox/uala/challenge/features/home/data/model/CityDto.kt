@@ -1,0 +1,44 @@
+package nox.uala.challenge.features.home.data.model
+
+import android.os.Parcelable
+import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
+import nox.uala.challenge.features.home.domain.model.City
+
+@Parcelize
+data class CityDto(
+    @SerializedName("_id") val id: Int?,
+    @SerializedName("name") val name: String?,
+    @SerializedName("country") val country: String?,
+    @SerializedName("coord") val coordinates: CoordinatesDto?
+) : Parcelable {
+
+    @Parcelize
+    data class CoordinatesDto(
+        @SerializedName("lat") val lat: Double?,
+        @SerializedName("lon") val lon: Double?
+    ) : Parcelable
+
+    fun toDomain(isFavorite: Boolean = false): City? {
+        val cityId = id ?: return null
+        val cityName = name?.takeIf { it.isNotBlank() } ?: return null
+        val cityCountry = country?.takeIf { it.isNotBlank() } ?: return null
+        val lat = coordinates?.lat ?: return null
+        val lng = coordinates?.lon ?: return null
+
+        return City(
+            id = cityId,
+            name = cityName,
+            country = cityCountry,
+            lat = lat,
+            lon = lng,
+            isFavorite = isFavorite
+        )
+    }
+}
+
+fun List<CityDto>.toDomain(favorites: List<Int> = emptyList()): List<City> {
+    return mapNotNull { dto ->
+        dto.toDomain(isFavorite = favorites.contains(dto.id))
+    }
+}
