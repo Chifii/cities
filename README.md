@@ -40,7 +40,7 @@ Este desafío presentó múltiples variables y escenarios, lo que me llevó a en
 - **Gestión de recursos**: Liberación adecuada de recursos pesados como la API de Google Maps.
 - **Filtrado optimizado**: Estrategias eficientes para filtrado de datos, considerando el volumen manejable de información.
 
-## Preprocesamiento para búsquedas eficientes
+### Preprocesamiento para búsquedas eficientes
 
 Para optimizar las búsquedas de ciudades en la aplicación, se implementó una estructura especializada utilizando **Room con FTS4 (Full-Text Search)**. Esta decisión proporciona varias ventajas significativas:
 
