@@ -70,6 +70,9 @@ El proyecto incluye pruebas unitarias para:
 - Implementar un sistema de autenticación para usuarios
 
 ## Screenshots
-[Agregar capturas de pantalla de la aplicación aquí]
+![Main Screen](screenshots/Main.png)
+![City Detail](screenshots/Info.png)
+![Map](screenshots/Map.png)
+![Landscape](screenshots/Landscape.png)
 
 ---
